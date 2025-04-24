@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import express from "express"
 import { connectDB } from "./lib/db.js";
 import authRoutes from "./routes/auth.route.js"
+import messageRoutes from "./routes/message.route.js"
 import cookieParse from "cookie-parser";
 
 dotenv.config();
@@ -14,6 +15,7 @@ app.get("/",(req, res)=>{
     res.send(`it is working`);
  })
 app.use("/api/auth", authRoutes);
+app.use("/api/message", messageRoutes);
 app.listen(PORT, ()=>{
     console.log(`server is running on ${PORT}`)
     connectDB()
